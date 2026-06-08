@@ -11,7 +11,10 @@ export function createApp(options = {}) {
   app.use(express.json());
 
   app.get("/api/health", (_req, res) => {
-    res.json({ status: "ok" });
+    res.json({
+      status: "ok",
+      message: "Task manager API is running",
+    });
   });
 
   app.use("/api/tasks", createTaskRouter(store));
