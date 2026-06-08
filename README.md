@@ -10,7 +10,7 @@ Momentum Tasks provides a clean and responsive productivity experience where use
 
 ### Frontend
 
-https://momentum-tasks-five.vercel.app
+https://momentum-tasks-lb8gc3aet-rohit-bansals-projects-e71270a5.vercel.app/
 
 ### Backend API
 
