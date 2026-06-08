@@ -250,8 +250,8 @@ export default function App() {
             <input
               className="search-input"
               value={search}
-              onChange={(event) => setSearch(event.target.value)}
-              placeholder="Search by title"
+              onChange={(event) => setSearch(event.target.value.trimStart())}
+              placeholder="Search tasks by title"
             />
           </div>
 
