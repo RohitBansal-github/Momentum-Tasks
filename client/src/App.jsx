@@ -167,7 +167,7 @@ export default function App() {
     <main className="app-shell">
       <section className="hero">
         <div>
-          <p className="eyebrow">Studio Graphene assessment</p>
+          <p className="eyebrow">Momentum Task</p>
           <h1>Personal Task Manager</h1>
           <p className="intro">
             Create, edit, complete, search, and filter personal tasks from a
@@ -202,7 +202,7 @@ export default function App() {
             <input
               value={form.title}
               onChange={(event) => updateForm("title", event.target.value)}
-              placeholder="Finish assessment README"
+              placeholder="What needs to be done?"
               maxLength={120}
             />
           </label>
