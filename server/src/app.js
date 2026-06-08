@@ -17,6 +17,12 @@ export function createApp(options = {}) {
     });
   });
 
+  app.get("/", (_req, res) => {
+  res.json({
+    message: "Momentum Tasks API is running",
+  });
+});
+
   app.use("/api/tasks", createTaskRouter(store));
 
   app.use((err, _req, res, _next) => {
