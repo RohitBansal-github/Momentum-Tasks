@@ -4,5 +4,5 @@ const PORT = process.env.PORT || 4000;
 const app = createApp();
 
 app.listen(PORT, () => {
-  console.log(`Task manager API running on http://localhost:${PORT}`);
+  console.log(`Server running successfully on port ${PORT}`);
 });
