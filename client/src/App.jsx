@@ -170,8 +170,7 @@ export default function App() {
           <p className="eyebrow">Momentum Task</p>
           <h1>Personal Task Manager</h1>
           <p className="intro">
-            Create, edit, complete, search, and filter personal tasks from a
-            full-stack React and Express app.
+            Create, edit, complete, search, and filter personal tasks.
           </p>
         </div>
         <div className="summary" aria-label="Task summary">
