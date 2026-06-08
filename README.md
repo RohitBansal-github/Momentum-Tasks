@@ -1,216 +1,321 @@
-# Personal Task Manager
+# Momentum Tasks
 
-This project is my submission for **Exercise 1: Personal Task Manager** from the Studio Graphene Full Stack Developer assessment. It is a small full-stack task manager where one user can create, view, update, complete, filter, search, and delete personal tasks.
+A modern full-stack task management application built with React, Vite, and Express.js.
 
-## Live Demo Links
+Momentum Tasks provides a clean and responsive productivity experience where users can create, organize, filter, search, update, and manage daily tasks efficiently through a lightweight REST API and responsive frontend interface.
 
-- Frontend: To be added after deployment
-- Backend API: To be added after deployment
+---
 
-## Tech Stack
+## 🚀 Live Demo
 
-- **Frontend:** React with Vite, using functional components and hooks for UI state.
-- **Backend:** Node.js and Express for a simple REST API.
-- **Storage:** JSON file persistence so tasks survive server restarts.
-- **Styling:** Plain CSS to keep the UI lightweight and easy to review.
-- **Testing:** Node's built-in test runner with Supertest for backend API coverage.
+### Frontend
 
-I used AI assistance while building this project, but I reviewed the code and kept the implementation intentionally straightforward so I can explain each file in the follow-up interview.
+https://momentum-tasks-five.vercel.app
 
-## How to Run Locally
+### Backend API
 
-Assuming Node.js is installed:
+https://momentum-tasks-8ror.onrender.com
 
-```bash
-npm install
-npm run install:all
-npm run dev
-```
+### Health Endpoint
 
-Then open:
+https://momentum-tasks-8ror.onrender.com/api/health
 
-- React app: `http://localhost:5173`
-- Express API: `http://localhost:4000/api`
+---
 
-To run the backend tests:
+# ✨ Features
 
-```bash
-npm test
-```
+* Create, edit, complete, and delete tasks
+* Smart task filtering (All / Active / Completed)
+* Real-time task search
+* Due date support
+* Overdue task highlighting
+* Live task statistics dashboard
+* Persistent JSON-based storage
+* RESTful API architecture
+* Fully responsive UI
+* Error handling and loading states
+* Backend API test coverage
 
-To build the frontend:
+---
 
-```bash
-npm run build
-```
+# 🛠️ Tech Stack
 
-## API Documentation
+## Frontend
 
-### Health Check
+* React
+* Vite
+* JavaScript (ES Modules)
+* CSS3
 
-`GET /api/health`
+## Backend
 
-Response:
+* Node.js
+* Express.js
 
-```json
-{
-  "status": "ok"
-}
-```
+## Utilities & Libraries
 
-### List Tasks
+* NanoID
+* Dotenv
+* CORS
+* Supertest
 
-`GET /api/tasks?status=all&search=readme`
+## Deployment
 
-Query parameters:
+* Vercel (Frontend)
+* Render (Backend)
 
-- `status`: `all`, `active`, or `completed`
-- `search`: optional title search
+---
 
-Response:
-
-```json
-{
-  "tasks": [
-    {
-      "id": "abc123",
-      "title": "Finish README",
-      "description": "Add API docs and deployment links",
-      "dueDate": "2026-06-05",
-      "completed": false,
-      "createdAt": "2026-06-03T18:00:00.000Z",
-      "updatedAt": "2026-06-03T18:00:00.000Z"
-    }
-  ]
-}
-```
-
-Tasks are returned newest first by `createdAt`.
-
-### Task Summary
-
-`GET /api/tasks/summary`
-
-Response:
-
-```json
-{
-  "total": 3,
-  "active": 2,
-  "completed": 1
-}
-```
-
-### Create Task
-
-`POST /api/tasks`
-
-Request body:
-
-```json
-{
-  "title": "Finish assessment",
-  "description": "Check requirements and deploy",
-  "dueDate": "2026-06-05"
-}
-```
-
-Response:
-
-```json
-{
-  "task": {
-    "id": "abc123",
-    "title": "Finish assessment",
-    "description": "Check requirements and deploy",
-    "dueDate": "2026-06-05",
-    "completed": false,
-    "createdAt": "2026-06-03T18:00:00.000Z",
-    "updatedAt": "2026-06-03T18:00:00.000Z"
-  }
-}
-```
-
-### Update Task
-
-`PATCH /api/tasks/:id`
-
-Request body can include any of:
-
-```json
-{
-  "title": "Finish and deploy assessment",
-  "description": "Update README with live links",
-  "dueDate": "2026-06-06",
-  "completed": true
-}
-```
-
-Response:
-
-```json
-{
-  "task": {
-    "id": "abc123",
-    "title": "Finish and deploy assessment",
-    "description": "Update README with live links",
-    "dueDate": "2026-06-06",
-    "completed": true,
-    "createdAt": "2026-06-03T18:00:00.000Z",
-    "updatedAt": "2026-06-03T19:00:00.000Z"
-  }
-}
-```
-
-### Delete Task
-
-`DELETE /api/tasks/:id`
-
-Response: `204 No Content`
-
-## Project Structure
+# 📂 Project Structure
 
 ```text
-.
-├── client
-│   ├── src
+Momentum-Tasks/
+│
+├── client/
+│   ├── src/
 │   │   ├── api.js
 │   │   ├── App.jsx
 │   │   ├── main.jsx
 │   │   └── styles.css
+│   │
 │   ├── index.html
 │   ├── package.json
 │   └── vite.config.js
-├── server
-│   ├── src
-│   │   ├── routes
+│
+├── server/
+│   ├── src/
+│   │   ├── routes/
 │   │   │   └── tasks.js
-│   │   ├── storage
+│   │   │
+│   │   ├── storage/
 │   │   │   └── taskStore.js
+│   │   │
 │   │   ├── app.js
 │   │   └── server.js
-│   ├── test
+│   │
+│   ├── test/
 │   │   └── tasks.test.js
+│   │
 │   └── package.json
+│
 ├── package.json
 └── README.md
 ```
 
-## What Works
+---
 
-- Add tasks with required title, optional description, and optional due date.
-- View tasks newest first.
-- Toggle tasks complete or incomplete.
-- Edit title, description, and due date.
-- Delete tasks with a browser confirmation prompt.
-- Filter by all, active, and completed.
-- Search by task title.
-- Show active and completed counts.
-- Highlight overdue incomplete tasks.
-- Show loading, error, and empty states.
-- Persist tasks in `server/data/tasks.json` across server restarts.
-- Backend API tests cover creation, listing, validation, completion, and filtering.
+# ⚙️ Local Development Setup
 
-## Next Steps
+## 1. Clone Repository
 
-If I had more time, I would add drag-and-drop reordering, improve keyboard shortcuts for faster task entry, add frontend component tests, and deploy the frontend and backend with environment-specific API URLs.
+```bash
+git clone https://github.com/RohitBansal-github/Momentum-Tasks.git
+cd Momentum-Tasks
+```
+
+---
+
+# 🔧 Backend Setup
+
+## Navigate to server
+
+```bash
+cd server
+```
+
+## Install dependencies
+
+```bash
+npm install
+```
+
+## Configure environment variables
+
+Create a `.env` file inside the `server` directory:
+
+```env
+PORT=4000
+TASKS_FILE=./data/tasks.json
+```
+
+## Start backend server
+
+```bash
+npm start
+```
+
+Backend runs at:
+
+```bash
+http://localhost:4000
+```
+
+---
+
+# 💻 Frontend Setup
+
+## Navigate to client
+
+```bash
+cd client
+```
+
+## Install dependencies
+
+```bash
+npm install
+```
+
+## Configure environment variables
+
+Create a `.env` file inside the `client` directory:
+
+```env
+VITE_API_BASE_URL=http://localhost:4000/api
+```
+
+## Start frontend
+
+```bash
+npm run dev
+```
+
+Frontend runs at:
+
+```bash
+http://localhost:5173
+```
+
+---
+
+# 📡 API Endpoints
+
+## Health Check
+
+```http
+GET /api/health
+```
+
+---
+
+## Get All Tasks
+
+```http
+GET /api/tasks
+```
+
+### Query Parameters
+
+| Parameter | Description              |
+| --------- | ------------------------ |
+| status    | all / active / completed |
+| search    | search tasks by title    |
+
+Example:
+
+```http
+GET /api/tasks?status=active&search=task
+```
+
+---
+
+## Create Task
+
+```http
+POST /api/tasks
+```
+
+### Request Body
+
+```json
+{
+  "title": "Finish project documentation",
+  "description": "Add deployment instructions and API docs",
+  "dueDate": "2026-06-10"
+}
+```
+
+---
+
+## Update Task
+
+```http
+PATCH /api/tasks/:id
+```
+
+---
+
+## Delete Task
+
+```http
+DELETE /api/tasks/:id
+```
+
+---
+
+## Task Summary
+
+```http
+GET /api/tasks/summary
+```
+
+---
+
+# 🧪 Testing
+
+Run backend API tests:
+
+```bash
+cd server
+npm test
+```
+
+Current test coverage includes:
+
+* Task creation
+* Validation
+* Filtering
+* Completion updates
+* Task listing
+
+---
+
+# 🎯 Key Highlights
+
+* Clean separation of frontend and backend architecture
+* Modular Express route and storage structure
+* Responsive UI with lightweight styling
+* Production-ready environment configuration
+* RESTful API design
+* Persistent task storage without external database dependency
+* Optimized for simplicity, maintainability, and readability
+
+---
+
+# 🔮 Future Improvements
+
+Potential future enhancements include:
+
+* Drag-and-drop task ordering
+* Authentication & user accounts
+* Database integration (MongoDB/PostgreSQL)
+* Dark mode support
+* Frontend component testing
+* Task categories & priorities
+* Docker containerization
+* CI/CD workflows
+
+---
+
+# 👨‍💻 Author
+
+Rohit Bansal
+
+GitHub:
+https://github.com/RohitBansal-github
+
+---
+
+# 📄 License
+
+This project is licensed under the MIT License.
